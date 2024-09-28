@@ -124,6 +124,10 @@
       enable = true;
     };
 
+    bufferline = {
+      enable = true;
+    };
+
     telescope = {
       enable = true;
       keymaps = {
