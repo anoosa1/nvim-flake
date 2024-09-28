@@ -46,7 +46,6 @@
       ...
     }: let
       inherit (self) outputs;
-      pkgs = nixpkgs.legacyPackages.${system};
       nixvimModule = {
         inherit pkgs;
         module = import ./config;
