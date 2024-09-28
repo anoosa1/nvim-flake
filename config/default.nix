@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./keybindings.nix
+  ];
   extraConfigVim = ''
     let mapleader = " "
     highlight LineNr guifg=#96B5B4
@@ -126,25 +129,24 @@
 
     bufferline = {
       enable = true;
-      luaConfig = ''
-        vim.api.nvim_set_keymap('n', '<leader>bn', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bp', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bc', ':BufferLinePick<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bse', ':BufferLineSortByExtension<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bsd', ':BufferLineSortByDirectory<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bsi', ":lua require'bufferline'.sort_buffers_by(function(buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>", { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bmn', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>bmp', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b1', '<Cmd>BufferLineGoToBuffer 1<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b2', '<Cmd>BufferLineGoToBuffer 2<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b3', '<Cmd>BufferLineGoToBuffer 3<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b4', '<Cmd>BufferLineGoToBuffer 4<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b5', '<Cmd>BufferLineGoToBuffer 5<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b6', '<Cmd>BufferLineGoToBuffer 6<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b7', '<Cmd>BufferLineGoToBuffer 7<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b8', '<Cmd>BufferLineGoToBuffer 8<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '<leader>b9', '<Cmd>BufferLineGoToBuffer 9<CR>', { noremap = true, silent = true })
-      '';
+      #luaConfig.pre = ''
+      #  vim.keymap.set('n', '<leader>bn', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>bp', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>bc', ':BufferLinePick<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>bse', ':BufferLineSortByExtension<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>bsd', ':BufferLineSortByDirectory<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>bmn', ':BufferLineMoveNext<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>bmp', ':BufferLineMovePrev<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b1', '<Cmd>BufferLineGoToBuffer 1<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b2', '<Cmd>BufferLineGoToBuffer 2<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b3', '<Cmd>BufferLineGoToBuffer 3<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b4', '<Cmd>BufferLineGoToBuffer 4<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b5', '<Cmd>BufferLineGoToBuffer 5<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b6', '<Cmd>BufferLineGoToBuffer 6<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b7', '<Cmd>BufferLineGoToBuffer 7<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b8', '<Cmd>BufferLineGoToBuffer 8<CR>', { noremap = true, silent = true })
+      #  vim.keymap.set('n', '<leader>b9', '<Cmd>BufferLineGoToBuffer 9<CR>', { noremap = true, silent = true })
+      #'';
     };
 
     which-key = {
